@@ -18,6 +18,7 @@ if(process.env.NODE_ENV === "production"){
 // Homepage Route
 app.get('/', async(req, res) =>{
   const allMemes = await pool.query("SELECT * FROM memes_table LIMIT 100");
+  if(!allMemes.rows[0]) return res.json("Nothin to see here!");
   const allMemesRows = allMemes.rows;
   allMemesRows.sort((a, b)=> 
   {return b.id - a.id;})
