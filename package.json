@@ -10,7 +10,7 @@
   "scripts": {
     "heroku-prebuild": "npm install",
     "start": "node index.js",
-    "heroku-postbuild": "npm install && node index.js",
+    "heroku-postbuild": "npm install && npm run build",
     "dev": "nodemon index",
     "deploy": "node index.js"
   },
