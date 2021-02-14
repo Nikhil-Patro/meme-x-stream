@@ -12,7 +12,9 @@ app.set('view engine', 'handlebars');
 // Body Parser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static(path.join(__dirname, '/build')));
+}
 // Homepage Route
 app.get('/', async(req, res) =>{
   const allMemes = await pool.query("SELECT * FROM memes_table LIMIT 100");
@@ -44,9 +46,7 @@ app.post('/', async(req, res) => {
   res.redirect('/');
 });
 // Set static folder
-if(process.env.NODE_ENV === "production"){
-  app.use(express.static(path.join(__dirname, '/public')));
-}
+
 app.use(express.static(path.join(__dirname, '/public')));
 
 // Members API Routes
