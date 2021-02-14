@@ -1,0 +1,31 @@
+body{
+background-color:black;
+}
+h1{
+    color: gold;
+    
+}
+h4{
+    color: gold;
+    
+}
+label{
+    color: whitesmoke;
+}
+.meme-div{
+    overflow: scroll;
+}
+img{
+    width:100%;
+    height:100%;
+    max-width:400px;
+    max-height: 400px;
+}
+.col-sm-6{
+    color:white;
+    margin-bottom: 40px;
+    align-content: center;
+}
+.name-div{
+    color:hotpink;
+}

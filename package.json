@@ -1,0 +1,26 @@
+{
+  "name": "expressdemo",
+  "version": "1.0.0",
+  "description": "express tutorial brad traversy",
+  "main": "index.js",
+  "engine": {
+    "node": "12.19.0",
+    "npm":"6.14.8"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "heroku-postbuild": "npm install && npm run start",
+    "dev": "nodemon index"
+  },
+  "author": "Nikhil Patro",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "pg": "^8.5.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

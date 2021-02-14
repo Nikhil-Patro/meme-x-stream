@@ -1,0 +1,36 @@
+<h1 class="text-center mb-3">{{title}}</h1>
+<form action="/" method="POST" class="mb-4">
+  <div class="form-group">
+    <label for="name">Meme Owner</label>
+    <input type="text" placeholder="Your memer name" name="name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="url">Meme URL</label>
+    <input type="url" placeholder="Enter the url of your meme" name="url" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="caption">Caption</label>
+    <input type="caption" placeholder="Write a witty caption!" name="caption" class="form-control">
+  </div>
+  <input type="submit" value="Add Meme" class="btn btn-primary btn-block">
+</form>
+<h4 class="text-center mb-4">Memes</h4>
+<div class=" container align-items-center d-flex flex-column justify-content-center">
+  {{#each memesList}}
+  <div class = "col-sm-6 text-center">
+    <div class="name-div row d-flex align-items-center justify-content-center">
+      Post by: {{this.name}}
+    </div>
+    <div class="row d-flex align-items-center justify-content-center">
+      {{this.caption}}
+    </div>
+    <div class="row d-flex align-items-center justify-content-center">
+      <img src={{this.url}} alt="Meme Image">
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+<div class=" api-btn d-flex align-items-center justify-content-center">
+  <a href="/memes" class="btn btn-light mt-4">Visit API</a>
+</div>
