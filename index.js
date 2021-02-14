@@ -45,9 +45,9 @@ app.post('/', async(req, res) => {
 });
 // Set static folder
 if(process.env.NODE_ENV === "production"){
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.static(path.join(__dirname, '/public')));
 }
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 // Members API Routes
 app.use('/memes', require('./routes/memes/members'));
