@@ -1,13 +1,14 @@
 {
   "name": "expressdemo",
   "version": "1.0.0",
-  "description": "express tutorial brad traversy",
+  "description": "Xmeme app",
   "main": "index.js",
   "engine": {
     "node": "12.19.0",
     "npm": "6.14.8"
   },
   "scripts": {
+    "heroku-prebuild": "npm install",
     "start": "node index.js",
     "heroku-postbuild": "npm install && npm run start",
     "dev": "nodemon index"
