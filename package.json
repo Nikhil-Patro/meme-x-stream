@@ -10,8 +10,9 @@
   "scripts": {
     "heroku-prebuild": "npm install",
     "start": "node index.js",
-    "heroku-postbuild": "npm install && npm run start",
-    "dev": "nodemon index"
+    "heroku-postbuild": "npm install && node index.js",
+    "dev": "nodemon index",
+    "deploy": "node index.js"
   },
   "author": "Nikhil Patro",
   "license": "ISC",
