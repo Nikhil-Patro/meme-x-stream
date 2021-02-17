@@ -40,11 +40,9 @@ router.post('/', async(req, res) => {
   if (!req.body.name || !req.body.url) {
     return res.status(404).json({ msg: 'Please include both name and email' });
   }
+  //check to see if it is not a duplicate POST request
   const name = req.body.name;
   const url = req.body.url;
-  //check to see if the url is valid
-  
-  //check to see if it is not a duplicate POST request
   const check = await pool.query("SELECT * FROM memes_table WHERE name = $1 AND url = $2", [name, url]);
   if(check.rows[0]) return res.status(409).json("Meme already exists!");
   try{
