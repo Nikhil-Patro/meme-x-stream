@@ -3,7 +3,6 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const pool = require('./db');
 const app = express();
-const https = require("https")
 // Init middleware
 
 // Handlebars Middleware
@@ -35,11 +34,10 @@ app.post('/', async(req, res) => {
   if (!req.body.name || !req.body.url) {
     return res.status(404).json({ msg: 'Please include a name and email' });
   }
-  const name = req.body.name;
-  const url = req.body.url;
-  //check to see for invalid urls
 
   //check to see if it is not a duplicate POST request
+  const name = req.body.name;
+  const url = req.body.url;
   const check = await pool.query("SELECT * FROM memes_table WHERE name = $1 AND url = $2", [name, url]);
   if(check.rows[0]) return res.status(409).json("Meme already exists!");
   
@@ -49,6 +47,19 @@ app.post('/', async(req, res) => {
   res.redirect('/');
 });
 // Set static folder
+
+app.use(express.static(path.join(__dirname, '/public')));
+
+// Members API Routes
+app.use('/memes', require('./routes/memes/members'));
+//Handle any other undefined routes 
+app.get("*", (req,res)=>{
+  res.redirect("/");
+});
+
+const PORT = (process.env.PORT || 8081);
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
 
 app.use(express.static(path.join(__dirname, '/public')));
 
